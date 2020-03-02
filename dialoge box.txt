@@ -1,0 +1,35 @@
+
+        buttonid = (Button)findViewById(R.id.buttonid);
+        buttonid.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                alertdialog = new AlertDialog.Builder(MainActivity.this);
+                //set title
+                alertdialog.setTitle(getResources().getString(R.string.title));
+                //set message
+                alertdialog.setMessage(getResources().getString(R.string.message));
+                //set Cancelable
+                alertdialog.setCancelable(false);
+                //set +ve button
+                alertdialog.setPositiveButton(getResources().getString(R.string.positive),
+                        new DialogInterface.OnClickListener()
+                        {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+
+                                MainActivity.this.finish();
+
+                            }
+                        });
+                //set -ve button
+                alertdialog.setNegativeButton(getResources().getString(R.string.negative),
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.cancel();
+                            }
+                        });
+                AlertDialog dialog = alertdialog.create();
+                dialog.show();
+            }
+        });

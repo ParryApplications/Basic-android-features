@@ -1,0 +1,90 @@
+package com.example.paras.practice;
+
+import android.os.Build;
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.widget.SearchView;
+import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+
+public class MainActivity extends AppCompatActivity {
+
+    Toolbar toolbar_id;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        toolbar_id = (Toolbar)findViewById(R.id.toolbar_id);
+        toolbar_id.setTitle("My Own Toolbar");
+        setSupportActionBar(toolbar_id);
+        toolbar_id.setSubtitle("First");
+
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
+        {
+            toolbar_id.setElevation(10.f);
+        }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu)
+    {
+        getMenuInflater().inflate(R.menu.menu_main,menu);
+        MenuItem item =menu.findItem(R.id.search_id);
+
+
+        SearchView searchView =(SearchView) item.getActionView();
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+
+                return false;
+            }
+        });
+
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item)
+    {
+        switch(item.getItemId())
+        {
+            case R.id.search_id:
+
+                Toast.makeText(this,""+item.getItemId(),Toast.LENGTH_SHORT).show();
+
+                break;
+            case R.id.second_id:
+
+                Toast.makeText(this,""+item.getItemId(),Toast.LENGTH_SHORT).show();
+
+                break;
+            case R.id.third_id:
+
+                Toast.makeText(this,""+item.getItemId(),Toast.LENGTH_SHORT).show();
+
+                break;
+            case R.id.fourth_id:
+
+                Toast.makeText(this,""+item.getItemId(),Toast.LENGTH_SHORT).show();
+
+                break;
+                default:
+                    Toast.makeText(this, "Invalid", Toast.LENGTH_SHORT).show();
+                    break;
+        }
+
+        return true;
+    }
+}
